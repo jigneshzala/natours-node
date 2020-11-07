@@ -1,10 +1,10 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const Tour = require('./../../models/tourModels');
+const Tour = require('./../../models/tourModel');
 const {
     deleteMany
-} = require('./../../models/tourModels');
+} = require('./../../models/tourModel');
 dotenv.config({
     path: './config.env'
 });
