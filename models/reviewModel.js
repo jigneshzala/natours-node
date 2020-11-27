@@ -35,6 +35,19 @@ const reviewSchema = new mongoose.Schema({
     }
 });
 
+// Will add tour and user embded object to every find query
+reviewSchema.pre(/^find/, function (next) {
+    //Populate method is used to get reltive object by id
+    this.populate({
+        path: 'tour',
+        select: 'name'
+    }).populate({
+        path: 'user',
+        select: 'name photo' 
+    });
+    next();
+});
+
 //Will create collection
 const Review = mongoose.model('Review', reviewSchema);
 
