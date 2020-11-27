@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const User = require('./userModel');
 // const validator = require('validator');
 
 const tourSchema = new mongoose.Schema({
@@ -101,7 +102,8 @@ const tourSchema = new mongoose.Schema({
         description: String,
         day: Number
 
-    }]
+    }],
+    guides: Array
 }, {
     toJSON: {
         virtuals: true
@@ -120,6 +122,16 @@ tourSchema.pre('save', function (next) {
     this.slug = slugify(this.name, {
         lower: true
     });
+    next();
+});
+
+//Embedding array of users object retrived by id on create tour
+tourSchema.pre('save', async function (next) {
+    //Will contain all promises
+    const guidesPromises = this.guides.map(async id => await User.findById(id));
+
+    //Wait unitll all promises resolved
+    this.guides = await Promise.all(guidesPromises);
     next();
 });
 
