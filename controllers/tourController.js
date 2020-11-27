@@ -37,7 +37,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
         select:'-__v'
     }); */
 
-    const tour = await Tour.findById(req.params.id);
+    const tour = await Tour.findById(req.params.id).populate('reviews');
 
     //Another way
     //Tour.findOne({_id:req.params.id})
