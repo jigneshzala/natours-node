@@ -31,6 +31,12 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
 
 exports.getTour = catchAsync(async (req, res, next) => {
 
+    //Use populate to retrive guides object from id
+    /* const tour = await Tour.findById(req.params.id).populate({
+        path:'guides',
+        select:'-__v'
+    }); */
+
     const tour = await Tour.findById(req.params.id);
 
     //Another way
