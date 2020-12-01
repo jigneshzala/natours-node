@@ -36,6 +36,12 @@ const reviewSchema = new mongoose.Schema({
     }
 });
 
+reviewSchema.index({
+    tour: 1,
+    user: 1
+}, {
+    unique: true
+});
 // Will add tour and user embded object to every find query
 reviewSchema.pre(/^find/, function (next) {
     //Populate method is used to get reltive object by id
