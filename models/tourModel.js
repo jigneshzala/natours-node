@@ -126,6 +126,8 @@ tourSchema.index({
 });
 
 tourSchema.index({slug:1});
+//Must Required for Geodata
+tourSchema.index({startLocation:'2dsphere'});
 
 tourSchema.virtual('durationWeeks').get(function () {
     return this.duration / 7;
