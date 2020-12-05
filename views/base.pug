@@ -2,6 +2,8 @@ doctype html
 html 
     head
         block head
+            meta(http-equiv="Content-Security-Policy" script-src='unsafe-inline')
+            //- meta(http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline' 'unsafe-eval' http://platform.linkedin.com https://cdnjs.cloudflare.com; script-src-elem 'unsafe-inline' 'unsafe-eval' http://platform.linkedin.com https://cdnjs.cloudflare.com")
             meta(charset='UTF-8') 
             meta(name="viewport" content="width=device-width, initial-scale=1.0")
             //- meta(http-equiv="Content-Security-Policy" content="script-src 'self' http://xxxx 'unsafe-inline' 'unsafe-eval'")
@@ -20,8 +22,8 @@ html
 
         // FOOTER
         include _footer
-
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous")
+        //- script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha512-3BBFWr73Xrf8GRjO+0pl0cbVwESBvg3ovnuCXpoqOkC/mkt/hTkFtutUPrwRz8eLySYvy5v1daulkyUZYvH8jw==" crossorigin="anonymous")
         script(src='/js/mapbox.js')
         script(src='/js/login.js')
 
